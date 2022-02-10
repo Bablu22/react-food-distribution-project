@@ -35,7 +35,7 @@ const AddStudent = () => {
 
 
             })
-        console.log(data);
+       
 
 
 

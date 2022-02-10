@@ -89,7 +89,7 @@ const UpdateFood = ({ product, modal, openModal, closeModal }) => {
                                             <div
                                                 className='cursor-pointer'
                                                 onClick={() => closeModal(false)}>
-                                                <i class="fas fa-times text-red-500 text-2xl "></i>
+                                                <i className="fas fa-times text-red-500 text-2xl "></i>
                                             </div>
                                         </div>
                                         <div className="mt-2">

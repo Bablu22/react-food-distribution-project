@@ -1,19 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import StudentData from './StudentData';
-import StudentUpdateModal from './StudentUpdateModal';
 
 const StudentTable = () => {
 
     const [students, setStudents] = useState([])
-    
+    const [pageCount, setPageCount] = useState(0)
+    const [page, setPage] = useState(0)
+    const size = 5
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/students')
+        fetch(`http://localhost:5000/students?page=${page}&&size=${size}`)
             .then(res => res.json())
-            .then(data => setStudents(data))
-    }, [students])
+            .then(data => {
+                setStudents(data.students)
+                const count = data.count
+                const pageNumber = Math.ceil(count / size)
+                setPageCount(pageNumber)
+            }
+
+            )
+    }, [page])
+
+
 
     const approvedStatus = id => {
         fetch(`http://localhost:5000/students/${id}`, {
@@ -65,6 +75,17 @@ const StudentTable = () => {
     }
 
 
+    const [isChecked, setIsChecked] = useState(false);
+
+    const handleOnChange = (id) => {
+
+        setIsChecked(true);
+        console.log(id);
+
+
+    };
+
+
 
 
     return (
@@ -100,14 +121,27 @@ const StudentTable = () => {
                                     student={student}
                                     handle={handleDelete}
                                     update={approvedStatus}
-                                   
+                                    checkbox={handleOnChange}
+                                    isChecked={isChecked}
+
                                 ></StudentData>)
                             }
                         </table>
                     </div>
                 </div>
+                <div className=''>
+
+                    {
+                        [...Array(pageCount).keys()].map(number => <button
+                            key={number}
+                            onClick={() => setPage(number)}
+                            className={number === page ? 'h-10 px-5 transition-colors duration-150 bg-indigo-600 text-white border  border-indigo-600 focus:shadow-outline' : 'h-10 px-5 text-indigo-600 transition-colors duration-150 bg-white border border-indigo-600 focus:shadow-outline'}
+
+                        >{number + 1}</button>)
+                    }
+                </div>
             </section>
-            
+
         </div>
     );
 };

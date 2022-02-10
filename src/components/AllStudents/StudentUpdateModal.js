@@ -7,7 +7,7 @@ const StudentUpdateModal = ({ modal, openModal, closeModal, student }) => {
 
 
 
-    console.log(student);
+
     const cancelButtonRef = useRef(null)
     const shiftRef = useRef()
     const statusRef = useRef()
@@ -96,7 +96,7 @@ const StudentUpdateModal = ({ modal, openModal, closeModal, student }) => {
                                                 <div
                                                     className='cursor-pointer'
                                                     onClick={() => closeModal(false)}>
-                                                    <i class="fas fa-times text-red-500 text-2xl "></i>
+                                                    <i className="fas fa-times text-red-500 text-2xl "></i>
                                                 </div>
                                             </div>
                                             <div className="mt-2">

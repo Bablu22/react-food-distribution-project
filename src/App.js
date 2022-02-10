@@ -7,6 +7,7 @@ import {
 import AddFood from "./components/AddFood/AddFood";
 import AddStudent from "./components/AddStudent/AddStudent";
 import StudentTable from "./components/AllStudents/StudentTable";
+import FoodDistribution from "./components/FoodDistribution/FoodDistribution";
 
 
 function App() {
@@ -15,9 +16,10 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Dashboard />}>
-            <Route path="/addFood" element={<AddFood />} />
+            <Route path="/" element={<AddFood />} />
             <Route path="/addStudent" element={<AddStudent />} />
             <Route path="/students" element={<StudentTable />} />
+            <Route path="/distribution" element={<FoodDistribution />} />
           </Route>
         </Routes>
       </BrowserRouter>

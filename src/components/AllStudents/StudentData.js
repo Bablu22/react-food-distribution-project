@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import StudentUpdateModal from './StudentUpdateModal';
 
-const StudentData = ({ student, handle, }) => {
+const StudentData = ({ student, handle, checkbox, isChecked }) => {
 
     const { name, roll, age, classname, hall, shift, status, _id } = student
 
     const [open, setOpen] = useState(false)
     const openModal = () => setOpen(true)
     const closeModal = () => setOpen(false)
+
+
 
     return (
         <>
@@ -75,13 +77,16 @@ const StudentData = ({ student, handle, }) => {
                         <div className="flex item-center justify-center">
 
                             <div>
-                                <input type="checkbox" class="form-checkbox mt-2 mr-2 h-4 w-4  text-blue-600" />
+                                <input
+
+                                    onClickCapture={() => checkbox(_id)}
+                                    type="checkbox" className="form-checkbox mt-2 mr-2 h-4 w-4  text-blue-600" />
                             </div>
                             <button
                                 onClick={() => handle(_id)}
                                 className="w-5 mr-2 transform hover:text-purple-500 hover:scale-110">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokelineCap="round" strokelineJoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                 </svg>
                             </button>
                             <button
